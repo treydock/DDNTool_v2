@@ -269,9 +269,11 @@ def main_func():
         # the DDN API and some other libraries emit
         for log_name in [ 'APIContext', 'pywebm', 'root',
                           'SFADiskDriveStatistics', 'SFAPresentation',
-                          'SFAVirtualDiskStatistics' ]:
+                          'SFAVirtualDiskStatistics', 'SFAVirtualDisk',
+                          'SFAController', 'SFAStoragePool' ]:
             temp_log = logging.getLogger( log_name)
             temp_log.setLevel( logging.WARNING)
+            logging.getLogger('ddn.sfa.core.' + log_name).setLevel(logging.WARNING)
 
     # the requests package (used by the influx package) is very verbose, so
     # limit it even when we're in debug mode
